@@ -1,3 +1,5 @@
+package knn.dbUtils;
+
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 
