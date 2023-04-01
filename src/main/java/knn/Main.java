@@ -8,22 +8,23 @@ import knn.distanceFunctions.DistanceFunction;
 import knn.distanceFunctions.EuclideanDistance;
 import knn.distanceFunctions.ManhattanDistance;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        Properties properties = loadClassifier();
         CqlSession session = CassandraConnector.connect();
 
         // Load data from Cassandra
         List<DataPoint> dataPoints = loadDataPoints(session);
 
         // Initialize the k-nearest neighbors classifier
-        int k = 3; // You can change the value of k based on your requirements
+        int k = Integer.parseInt(properties.getProperty("configuration.classifier"));// You can change the value of
+                                                                                     // k in application.properties
+                                                                                     // based on your requirements
         KNearestNeighbors knn = new KNearestNeighbors(k, dataPoints);
 
         Scanner scanner = new Scanner(System.in);
@@ -88,5 +89,15 @@ public class Main {
         }
 
         return dataPoints;
+    }
+
+    private static Properties loadClassifier() {
+        Properties properties = new Properties();
+        try (InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("application.properties")) {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            System.err.println("Error loading application.properties: " + e.getMessage());
+        }
+        return properties;
     }
 }

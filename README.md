@@ -97,3 +97,16 @@ or label of the new data point. In this case, the algorithm will consider the 3 
 int k = 3; // Change the value of k based on your requirements
 KNearestNeighbors knn = new KNearestNeighbors(k, dataPoints);
 ```
+
+<h3>Example Input and Output</h3>
+```
+Enter feature_1 value:
+3.56
+Enter feature_2 value:
+7.85
+Enter the distance function ("e" for euclidean or "m" for manhattan):
+e
+Enter the coefficients for each feature (comma-separated):
+5,8
+The classified label for the new data point is: A
+```
