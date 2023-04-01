@@ -19,11 +19,14 @@ Organize your project files and directories as follows:
                         main/  
                             java/  
                                 knn/  
+                                    dbUtils/
+                                        CassandraConnector.java
+                                    distanceFunctions/
+                                        DistanceFunction.java
+                                        EuclideanDistance.java
+                                        ManhattanDistance.java
                                     Main.java  
-                                    KNearestNeighbors.java  
-                                    DistanceFunction.java  
-                                    EuclideanDistance.java  
-                                    ManhattanDistance.java  
+                                    KNearestNeighbors.java    
                                     DataPoint.java  
                                     DataPointDistance.java  
                     pom.xml  

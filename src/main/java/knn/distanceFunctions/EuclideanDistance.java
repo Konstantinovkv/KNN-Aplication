@@ -1,4 +1,4 @@
-package knn.distansFunctions;
+package knn.distanceFunctions;
 
 import knn.DataPoint;
 

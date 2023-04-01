@@ -1,6 +1,6 @@
 package knn;
 
-import knn.distansFunctions.DistanceFunction;
+import knn.distanceFunctions.DistanceFunction;
 
 import java.util.HashMap;
 import java.util.List;

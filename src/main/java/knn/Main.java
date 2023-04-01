@@ -4,8 +4,8 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.datastax.oss.driver.api.core.cql.Row;
 import knn.dbUtils.CassandraConnector;
-import knn.distansFunctions.DistanceFunction;
-import knn.distansFunctions.EuclideanDistance;
+import knn.distanceFunctions.DistanceFunction;
+import knn.distanceFunctions.EuclideanDistance;
 
 import java.util.ArrayList;
 import java.util.List;
