@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Main {
+
     public static void main(String[] args) {
         CqlSession session = CassandraConnector.connect();
 
@@ -39,7 +40,7 @@ public class Main {
     private static List<DataPoint> loadDataPoints(CqlSession session) {
         List<DataPoint> dataPoints = new ArrayList<>();
 
-        ResultSet resultSet = session.execute("SELECT * FROM my_keyspace.data_points;");
+        ResultSet resultSet = session.execute("SELECT * FROM knn.data_points;");
         for (Row row : resultSet) {
             UUID id = row.getUuid("id");
             double feature1 = row.getDouble("feature_1");
