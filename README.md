@@ -99,6 +99,7 @@ KNearestNeighbors knn = new KNearestNeighbors(k, dataPoints);
 ```
 
 <h3>Example Input and Output</h3>
+
 ```
 Enter feature_1 value:
 3.56
