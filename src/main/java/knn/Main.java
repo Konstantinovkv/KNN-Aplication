@@ -18,8 +18,10 @@ public class Main {
         Properties properties = loadClassifier();
         CqlSession session = CassandraConnector.connect();
 
+        String keyspace = properties.getProperty("cassandra.keyspace");
+
         // Load data from Cassandra
-        List<DataPoint> dataPoints = loadDataPoints(session);
+        List<DataPoint> dataPoints = loadDataPoints(session, keyspace);
 
         // Initialize the k-nearest neighbors classifier
         int k = Integer.parseInt(properties.getProperty("configuration.classifier"));// You can change the value of
@@ -74,10 +76,10 @@ public class Main {
         session.close();
     }
 
-    private static List<DataPoint> loadDataPoints(CqlSession session) {
+    private static List<DataPoint> loadDataPoints(CqlSession session, String keyspace) {
         List<DataPoint> dataPoints = new ArrayList<>();
 
-        ResultSet resultSet = session.execute("SELECT * FROM knn.data_points;");
+        ResultSet resultSet = session.execute(String.format("SELECT * FROM %s.data_points;", keyspace));
         for (Row row : resultSet) {
             UUID id = row.getUuid("id");
             double feature1 = row.getDouble("feature_1");

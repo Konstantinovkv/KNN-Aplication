@@ -80,6 +80,16 @@ python dbFiller.py
 
 <h3>Building and Running the Project:  </h3>
 
+Configure your cassandra authentication properties.
+
+```
+cassandra.ip_address=127.0.0.1
+cassandra.username=cassandra
+cassandra.password=cassandra
+cassandra.keyspace=knn
+cassandra.local_datacenter=datacenter1
+```
+
 The app will ask you to provide the desired distance function (Euclidean or Manhattan), the coefficients for each feature, and input values 
 for feature_1 and feature_2, in order to classify a new data point based on the k-nearest neighbors algorithm using the data stored in a 
 Cassandra NoSQL database.
@@ -90,12 +100,12 @@ The application should now run, classify a new data point, and display the class
 You can customize the k-nearest neighbors classifier by adjusting the value of k and choosing a different distance function. Edit the 
 `Main.java` file to make these changes:
 
-In the context of the k-nearest neighbors (KNN) algorithm, int k = 3; sets the number of nearest neighbors to consider when classifying 
+In the context of the k-nearest neighbors (KNN) algorithm, int k; sets the number of nearest neighbors to consider when classifying 
 a new data point. The value of k determines how many of the closest data points in the feature space will be used to determine the class 
 or label of the new data point. In this case, the algorithm will consider the 3 closest data points to the new data point for classification.
+int k; can be configured in application.properties.
 ``` java
-int k = 3; // Change the value of k based on your requirements
-KNearestNeighbors knn = new KNearestNeighbors(k, dataPoints);
+configuration.classifier=3
 ```
 
 <h3>Example Input and Output</h3>
